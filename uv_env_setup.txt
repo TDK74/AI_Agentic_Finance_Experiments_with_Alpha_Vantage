@@ -1,0 +1,55 @@
+1. Open a terminal in your folder:
+cmd
+or
+powershell
+
+
+2. If you're not in the correct folder:
+cd /d "C:\path\to\your\project"
+or
+cd /d "D:\path\to\your\project"
+
+
+3. Install uv if missing:
+python.exe -m pip install --upgrade pip
+pip install uv --upgrade
+or
+python -m pip install uv --upgrade
+
+
+4. Check active paths and versions (optional):
+where python
+where pip
+where uv
+
+python --version
+pip --version
+uv --version
+
+
+5. Create and activate virtual environment:
+uv venv your_env_name
+
+your_env_name\Scripts\activate
+or
+.\your_env_name\Scripts\activate (activate the virtual enviroment)
+
+(optinal)
+pip install uv --upgrade
+
+
+7. Install required packages:
+uv pip install alpha_vantage matplotlib pandas yfinance
+or
+uv pip install -r requirements_finance_env.txt (or your_requirements file)
+
+(optional: freeze snapshot)
+uv pip freeze > requirements_freeze.txt
+
+
+8. Verify everything works: 
+python -c "import pandas, yfinance, matplotlib, alpha_vantage; print('All good!')"
+
+
+Ready to rock-n-roll:
+Have fun!
