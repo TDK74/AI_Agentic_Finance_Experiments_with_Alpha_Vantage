@@ -23,7 +23,7 @@ It contains Python scripts that explore stock data using the Alpha Vantage API, 
 * Software: Python 3.11 (virtual env)
 * Virtual Environment, created with `uv` ( https://github.com/astral-sh/uv )
 
-For detailed instructions on setting up a virtual environment with `uv`, see **_uv_env_setup.txt_**, **_requirements_finance_env.txt_** and **_requirements_finance_freeze.txt_**.
+For detailed instructions on setting up a virtual environment with `uv` see **_uv_env_setup.txt_**, **_requirements_finance_env.txt_** and **_requirements_finance_freeze.txt_**.
 
 ## Notes
 - The API key is not included. Please replace `"YOUR_API_KEY"` with your own key.
