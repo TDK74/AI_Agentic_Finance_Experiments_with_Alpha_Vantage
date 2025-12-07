@@ -17,6 +17,7 @@ You can explore the course here:
   <https://github.com/TDK74/SC_Building_Generative_AI_Applications_with_Gradio> – raw Python code extracted from the Gradio course notebooks.
 
 ## What's Inside this repository
+- `Autogen_Coding_and_Financial_Analysis_v1.py` – **FAIL**: Attempts to integrate AutoGen multi-agent system (code writer and executor) with **Ollama** LLM client and **Gradio** interface for financial analysis. **Agents successfully communicate and generate code in the terminal**, but the Gradio interface fails upon launch due to the persistent error: **Error: Object of type OllamaLLM is not JSON serializable**.
 - `fetch_basic_daily_stock_data.py` – plots YTD gains for NVDA and SLYG using basic daily data from Alpha Vantage.
 - `fetch_ytd_stock_data_with_alpha_vantage.py` – attempts to use adjusted daily data (premium endpoint); may fail with demo API key.
 - `fetch_ytd_stock_data_with_AV_enhanced.py` – attempts to use adjusted daily data (premium endpoint) then switch to basic daily data if fails.
