@@ -32,6 +32,12 @@ config_writer = {"model" : "ollama"}
 config_executor = None
 code_executor_agent = None
 
+# ------------------------------------------------------------------------------------------ #
+# Unless you have a real OPENAI_API_KEY use this mimic key -> $env:OPENAI_API_KEY="ollama" 
+# in the terminal before running the file in order to avoid this ERROR:
+# Error: The api_key client option must be set either by passing api_key to the client or by 
+# setting the OPENAI_API_KEY environment variable
+# ------------------------------------------------------------------------------------------ #
 
 # --- Conversation history --- #
 conversation_log = []
@@ -273,3 +279,4 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("Gradio app stopped.")
+
