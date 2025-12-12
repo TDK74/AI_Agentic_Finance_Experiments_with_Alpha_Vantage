@@ -6,8 +6,6 @@ import requests
 from autogen.coding import LocalCommandLineCodeExecutor
 from autogen import ConversableAgent, AssistantAgent
 
-from ollama_manager import start_model, stop_model
-
 
 class OllamaLLM:
     def __init__(self, model = "mistral:7b", host = "http://localhost:11434"):
@@ -279,4 +277,3 @@ if __name__ == "__main__":
 
     except KeyboardInterrupt:
         print("Gradio app stopped.")
-
