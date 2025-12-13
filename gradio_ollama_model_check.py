@@ -6,11 +6,26 @@ from ollama_manager import start_model, model_exists, list_model_names
 
 available_models = list_model_names()
 
+
 def clean_model_name(name):
+    """
+    Cleans a model name by removing special characters.
+    Args:
+        name (str): Raw model name string.
+    Returns:
+        str: Cleaned model name with only alphanumeric characters, dots, and colons.
+    """
     return re.sub(r'[^a-zA-Z0-9\.:]', '', name.strip())
 
 
 def start_ollama_model(model_name):
+    """
+    Starts the specified Ollama model after cleaning the name.
+    Args:
+        model_name (str): Model name from dropdown or input.
+    Returns:
+        str: Status message indicating success or error.
+    """
     model_name = clean_model_name(model_name)
 
     if not model_name:
@@ -28,9 +43,6 @@ def start_ollama_model(model_name):
 
 
 with gr.Blocks() as demo:
-    # input = gr.Textbox(label = "Ollama model name", placeholder = "e.g. mistral:7b",
-    #                    info = "Enter/copy Ollama model name (e.g. gemma3:4b or 12b, llama3.1:8b," \
-    #                                                 " mistral:7b, phi3.5:3.8b, qwen3:4b or 8b)")
     input = gr.Dropdown(choices = available_models, label = "Choose Ollama model",
                         info = "Select a model available in your Ollama setup")
     btn_start = gr.Button("Start Ollama model")
