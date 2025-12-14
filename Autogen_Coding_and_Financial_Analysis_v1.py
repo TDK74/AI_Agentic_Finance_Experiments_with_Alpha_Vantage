@@ -8,11 +8,23 @@ from autogen import ConversableAgent, AssistantAgent
 
 
 class OllamaLLM:
+    """A client for interacting with Ollama's local LLM API."""
     def __init__(self, model = "mistral:7b", host = "http://localhost:11434"):
+        """Initialize the Ollama LLM client with model and host.
+        Args:
+            model (str): The Ollama model to use (default: "mistral:7b").
+            host (str): The Ollama server host URL (default: "http://localhost:11434").
+        """
         self.model = model
         self.host = host.rstrip("/")
 
     def complete(self, prompt):
+        """Send a prompt to the Ollama API and return the generated response.
+        Args:
+            prompt (str): The input prompt for the LLM.
+        Returns:
+            str: The generated text response from the LLM.
+        """
         responce = requests.post(f"{self.host}/api/generate",
                                  json = {"model" : self.model,
                                          "prompt" : prompt,
@@ -42,6 +54,13 @@ conversation_log = []
 
 def run_agentic_ai_task(llm_config_writer = config_writer,
                         llm_config_executor = config_executor):
+    """Run an agentic AI task to create and save a YTD stock gain plot for NVDA and AMD.
+    Args:
+        llm_config_writer (dict): Configuration for the code writer agent's LLM.
+        llm_config_executor (dict): Configuration for the code executor agent.
+    Returns:
+        tuple: Conversation log and path to the generated plot image, or None if failed.
+    """
     global code_executor_agent
     global code_writer_agent
 
@@ -113,6 +132,13 @@ def run_agentic_ai_task(llm_config_writer = config_writer,
 
 def run_agentic_ai_task_predefined(llm_config_writer = config_writer,
                                    llm_config_executor = config_executor):
+    """Run an agentic AI task using predefined functions to download and plot YTD stock prices.
+    Args:
+        llm_config_writer (dict): Configuration for the code writer agent's LLM.
+        llm_config_executor (dict): Configuration for the code executor agent.
+    Returns:
+        tuple: Conversation log and path to the generated plot image, or None if failed.
+    """
     global code_executor_agent
     global code_writer_agent
 
@@ -229,6 +255,12 @@ def run_agentic_ai_task_predefined(llm_config_writer = config_writer,
 
 # --- Reply handler --- #
 def reply_to_agents(user_message):
+    """Send a user message to the active agentic AI agents and log the reply.
+    Args:
+        user_message (str): The message to send to the agents.
+    Returns:
+        tuple: Updated conversation log and None.
+    """
     global code_executor_agent
     global code_writer_agent
 
