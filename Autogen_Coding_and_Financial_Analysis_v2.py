@@ -1,8 +1,8 @@
 import datetime
 import gradio as gr
+import json
 import os
 import requests
-import json
 
 from autogen.coding import LocalCommandLineCodeExecutor
 from autogen import ConversableAgent, AssistantAgent
@@ -13,11 +13,23 @@ from autogen import ConversableAgent, AssistantAgent
 # ----------------------------------------------------------------------
 class OllamaLLM:
     """Custom client for Ollama."""
+
     def __init__(self, model = "mistral:7b", host = "http://localhost:11434"):
+        """Initialize the Ollama LLM client with model and host.
+        Args:
+            model (str): The Ollama model to use (default: "mistral:7b").
+            host (str): The Ollama server host URL (default: "http://localhost:11434").
+        """
         self.model = model
         self.host = host.rstrip("/")
 
     def complete(self, prompt):
+        """Send a prompt to the Ollama API and return the generated response.
+        Args:
+            prompt (str): The input prompt for the LLM.
+        Returns:
+            str: The generated text response from the LLM.
+        """
         responce = requests.post(f"{self.host}/api/generate",
                                  json = {"model" : self.model,
                                          "prompt" : prompt,
@@ -91,7 +103,6 @@ def plot_stock_prices(stock_prices, filename):
 # ----------------------------------------------------------------------
 # Core Agent Setup Functions
 # ----------------------------------------------------------------------
-
 def setup_agents(executor_functions = None):
     """Sets up Autogen agents with the Ollama client."""
     # 1. Access the client lazily and globally
@@ -141,8 +152,7 @@ def setup_agents(executor_functions = None):
 # ----------------------------------------------------------------------
 # Gradio Handler Functions
 # ----------------------------------------------------------------------
-
-def _run_task_logic(predefined=False):
+def _run_task_logic(predefined = False):
     """Common logic for running both task types."""
     # 1. Setup Agents (Accesses client globally via get_ollama_client())
     if predefined:
@@ -195,10 +205,12 @@ def _run_task_logic(predefined=False):
 
 
 def run_agentic_ai_task_no_functions():
+    """Run agentic task without predefined functions."""
     return _run_task_logic(predefined = False)
 
 
 def run_agentic_ai_task_predefined():
+    """Run agentic task with predefined functions (stock prices)."""
     return _run_task_logic(predefined = True)
 
 
@@ -214,9 +226,7 @@ def reply_to_agents_placeholder(user_message):
 if __name__ == "__main__":
     try:
         # NOTE: get_ollama_client() will be called by the handlers when Gradio has already started.
-
         with gr.Blocks() as demo:
-
             with gr.Row():
                 btn_run_1 = gr.Button("Run Agentic AI Task (No functions)")
                 btn_run_2 = gr.Button("Run Agentic AI Task (Predefined functions)")
