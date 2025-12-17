@@ -53,3 +53,7 @@ For detailed instructions on setting up a virtual environment with `uv` see **_u
 <img width="50%" height="500" alt="NVDA_SLYG" src="https://github.com/user-attachments/assets/cd443501-4d9f-457e-bebc-49fd502d1430"/>
 <img width="50%" height="500" alt="NVDA_IBM" src="https://github.com/user-attachments/assets/f386438c-a9db-4ec4-8247-94d05528abae"/>
 <img width="50%" height="500" alt="NVDA_AMD" src="https://github.com/user-attachments/assets/0db8eb0a-e448-4b4f-830d-cff0041a5262"/>
+
+## Video demo
+Link to my illustrative Youtube video:  
+<https://youtu.be/cRRTTT09hAM>
