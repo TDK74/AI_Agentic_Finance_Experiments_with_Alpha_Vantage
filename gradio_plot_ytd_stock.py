@@ -7,10 +7,27 @@ from datetime import datetime
 
 
 def clean_ticker(ticker):
+    """
+    Removes non-alphabetic characters from a ticker symbol and returns uppercase letters only.
+    Args:
+        ticker (str): Raw ticker symbol.
+    Returns:
+        str: Cleaned ticker (only A-Z).
+    """
     return ''.join(filter(lambda c: c in string.ascii_uppercase, ticker.upper()))
 
 
 def plot_ytd(ticker1, ticker2, start_date, end_date):
+    """
+    Compares YTD stock gains for two tickers and returns a plot or error message.
+    Args:
+        ticker1 (str): First ticker (e.g. AAPL).
+        ticker2 (str): Second ticker (e.g. MSFT).
+        start_date (str): Start date (YYYY-MM-DD).
+        end_date (str): End date (YYYY-MM-DD).
+    Returns:
+        tuple: (plot, message) – plot if successful, None and error message otherwise.
+    """
     # Ensure date format is correct
     start_date = str(start_date)[ : 10]
     end_date = str(end_date)[ : 10]
