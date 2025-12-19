@@ -8,10 +8,29 @@ from datetime import datetime
 
 
 def clean_ticker(ticker):
+    """
+    Cleans a stock ticker symbol by removing all non-alphabetic characters
+    and converting to uppercase.
+    Args:
+        ticker (str): Raw ticker symbol, may contain invalid characters.
+    Returns:
+        str: Cleaned ticker containing only uppercase letters (A-Z).
+    """
     return ''.join(filter(lambda c: c in string.ascii_uppercase, ticker.upper()))
 
 
 def get_stock_data(ts, symbol, start_date, end_date):
+    """
+    Fetches and processes daily adjusted or basic stock data for a given ticker and date range.
+    Args:
+        ts (TimeSeries): Alpha Vantage TimeSeries API client.
+        symbol (str): Stock ticker symbol (e.g. 'NVDA').
+        start_date (str): Start date in 'YYYY-MM-DD' format.
+        end_date (str): End date in 'YYYY-MM-DD' format.
+    Returns:
+        tuple: (pd.Series, str) – cumulative percentage gain series and error message (empty if
+                                  successful). Returns (None, error_message) on failure.
+    """
     # Ensure date format is correct
     start_date = str(start_date)[ : 10]
     end_date = str(end_date)[ : 10]
@@ -61,6 +80,18 @@ def get_stock_data(ts, symbol, start_date, end_date):
 
 
 def fetch_and_plot_stocks(api_key, ticker1, ticker2, start_date, end_date):
+    """
+    Fetches and plots cumulative percentage gain for two stock tickers over a specified date range.
+    Args:
+        api_key (str): Alpha Vantage API key.
+        ticker1 (str): First stock ticker (e.g. 'AMD').
+        ticker2 (str): Second stock ticker (e.g. 'INTC').
+        start_date (str): Start date in 'YYYY-MM-DD' format.
+        end_date (str): End date in 'YYYY-MM-DD' format.
+    Returns:
+        tuple: (matplotlib.pyplot, str) – plot object and empty string if successful,
+               (None, error_message) if data fetch or validation fails.
+    """
     if not api_key.strip():
         return None, "⚠️ Please enter a valid API key."
 
@@ -86,9 +117,6 @@ def fetch_and_plot_stocks(api_key, ticker1, ticker2, start_date, end_date):
 
     return plt, ""
 
-
-# Use your Alpha Vantage API Key here
-# api_key = "YOUR_API_KEY"  # Replace "YOUR_API_KEY" with your actual API key
 
 demo = gr.Interface(
                     fn = fetch_and_plot_stocks,
