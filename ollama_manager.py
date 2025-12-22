@@ -4,6 +4,12 @@ from ollama import Client
 
 
 def model_exists(model_name):
+    """Check if a specific Ollama model is available locally.
+    Args:
+        model_name (str): Name of the model to check.
+    Returns:
+        bool: True if the model exists, False otherwise.
+    """
     client = Client(host = 'http://localhost:11434')
     models = client.list()['models']
 
@@ -11,6 +17,10 @@ def model_exists(model_name):
 
 
 def list_model_names():
+    """List the names of all available Ollama models.
+    Returns:
+        list[str]: A list of model names.
+    """
     client = Client(host = 'http://localhost:11434')
     models = client.list()['models']
 
@@ -18,7 +28,12 @@ def list_model_names():
 
 
 def start_model(model_name = "mistral:7b"):
-    """Start the Ollama model if not already running."""
+    """Start the Ollama model if not already running.
+    Args:
+        model_name (str, optional): Name of the model to start. Defaults to "mistral:7b".
+    Raises:
+        Exception: If there is an error starting the model.
+    """
     try:
         # Ollama models are loaded on-demand, so just check if the server is running
         client = Client(host = 'http://localhost:11434')
@@ -31,7 +46,14 @@ def start_model(model_name = "mistral:7b"):
 
 
 def stop_model(model_name: str) -> bool:
-    """Stop a running Ollama model via CLI."""
+    """Stop a running Ollama model via CLI.
+    Args:
+        model_name (str): Name of the model to stop.
+    Returns:
+        bool: True if the model was stopped successfully.
+    Raises:
+        RuntimeError: If there is an error stopping the model.
+    """
     try:
         result = subprocess.run(["ollama", "stop", model_name],
                                 capture_output = True, text = True, timeout = 10)
