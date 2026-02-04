@@ -1,8 +1,8 @@
 # AI Agentic Finance Experiments with Alpha Vantage
 
-Personal practice inspired by the short course "AI Agentic Design Patterns with AutoGen" on the DeepLearning.AI platform, available for free.  
+Personal practice inspired by the short course "AI Agentic Design Patterns with AutoGen" on the DeepLearning.AI platform, available for free, while the certificate and graded assessments require a paid subscription.  
 For more details, visit:  
-<https://www.deeplearning.ai/short-courses/ai-agentic-design-patterns-with-autogen/>
+<https://learn.deeplearning.ai/courses/ai-agentic-design-patterns-with-autogen/information>
 
 It contains Python scripts that explore stock data using the Alpha Vantage API, written as part of my personal experimentation and learning. In the final two lessons of the course, some API calls did not work as expected (likely due to API key limitations), so I registered my own key from Alpha Vantage (not the same API as in the course) to continue exploring the concepts independently.
 
