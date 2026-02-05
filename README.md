@@ -8,7 +8,7 @@ It contains Python scripts that explore stock data using the Alpha Vantage API, 
 
 In addition, this repository is also influenced by the short course "Building Generative AI Applications with Gradio" on the DeepLearning.AI platform.  
 You can explore the course here:  
-<https://www.deeplearning.ai/short-courses/building-generative-ai-applications-with-gradio/>
+<https://learn.deeplearning.ai/courses/huggingface-gradio/information>
 
 ## Related Repositories
 `Short Course: AI Agentic Design Patterns with AutoGen`:  
